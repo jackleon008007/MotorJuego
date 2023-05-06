@@ -2,7 +2,10 @@
 #include "Error.h"
 #include "Sprite.h"
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
+
 
 
 
@@ -10,8 +13,8 @@ using namespace std;
 
 MainGame::MainGame() {
 	window = nullptr;
-	width = 800;
-	height = 600;
+	width = 1000;
+	height = 800;
 	gameState = GameState::PLAY;
 	time = 0;
 }
@@ -87,27 +90,38 @@ void MainGame::processInput() {
 
 void MainGame::run() {
 	init();
-	int auxpos = -1;
-	int auxpos2 = 1;
-	int numSprite = 2;
-	for (int i = 0; i < numSprite; ++i) {
-		listSprite.push_back(Sprite());
-		listSprite[i].init(auxpos, auxpos, auxpos2, auxpos2);
-		auxpos *= -1;
-		auxpos2 *= -1;
-	}
-	
-	//sprite.init(-1, -1, 1, 1);
+
+	//sprite.init(0.2, 0.2, 1, 1);
 	//sprite2.init(1, 1, -1, -1);
+
 	update();
 
 }
 
 
+void MainGame::addRandomSprite() {
+	float randomPosx = rand() % 100;
+	randomPosx = randomPosx / 100;
+
+	float randomPosy = rand() % 100;
+	randomPosy = randomPosy / 100;
+
+
+	listSprite.push_back(Sprite());
+	listSprite[listSprite.size() - 1].init(randomPosx, randomPosy, -1, -1);
+}
 void MainGame::update() {
+	int timer = 0;
+
 	while (gameState != GameState::EXIT) {
 		draw();
 		processInput();
+		timer++;
+		if (timer>500) {
+			addRandomSprite();
+			timer = 0;
+		}
+		
 	}
 }
 

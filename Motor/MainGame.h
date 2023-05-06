@@ -37,6 +37,6 @@ public:
 	void run();
 	void draw();
 	void update();
-
+	void addRandomSprite();
 };
 
