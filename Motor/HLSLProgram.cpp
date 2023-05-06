@@ -113,7 +113,7 @@ void HLSLProgram::linkShader(){
 GLuint HLSLProgram::getUniformLocation(const string& name) {
 	GLuint location = glGetUniformLocation(programID, name.c_str());
 	if (location == GL_INVALID_INDEX) {
-		fatalError("Uniform " + location + " not found");
+		//fatalError("Uniform " + location + " not found");
 	}
 	return location;
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL/SDL.h>
 #include <GL/eglew.h>
+#include <vector>
 #include "Sprite.h"
 #include "HLSLProgram.h"
 enum GameState {
@@ -13,11 +14,15 @@ private:
 
 	int width;
 	int height;
-
+	float time;
 	SDL_Window* window;
 
 	HLSLProgram program;
 	Sprite sprite;
+	vector<Sprite> listSprite;
+	Sprite sprite2;
+
+
 	void init();
 	
 	void processInput();

@@ -1,2 +1,6 @@
-﻿  Sprite.cpp
+﻿  MainGame.cpp
+D:\VS projects\MotorJuego\Motor\MainGame.cpp(58,16): warning C4305: '+=': truncation from 'double' to 'float'
+D:\VS projects\MotorJuego\Motor\MainGame.cpp(60,20): warning C4018: '<': signed/unsigned mismatch
+D:\VS projects\MotorJuego\Motor\MainGame.cpp(95,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\VS projects\MotorJuego\Motor\MainGame.cpp(95,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Motor.vcxproj -> D:\VS projects\MotorJuego\Debug\Motor.exe
