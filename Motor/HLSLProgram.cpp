@@ -82,6 +82,7 @@ void HLSLProgram::compileShader(const string& shaderPath, GLuint id) {
 void HLSLProgram::linkShader(){
 	glAttachShader(programID, vertexShaderID);
 	glAttachShader(programID, fragmentShaderID);
+	glLinkProgram(programID);
 
 	GLint isLinked = 0;
 	glGetProgramiv(programID, GL_LINK_STATUS,(int*)&isLinked);
@@ -108,7 +109,12 @@ void HLSLProgram::linkShader(){
 
 
 }
-/*
-GLuint HLSLProgram::getUniformLocation(const string& name) {
 
-}*/
+GLuint HLSLProgram::getUniformLocation(const string& name) {
+	GLuint location = glGetUniformLocation(programID, name.c_str());
+	if (location == GL_INVALID_INDEX) {
+		fatalError("Uniform " + location + " not found");
+	}
+	return location;
+
+}

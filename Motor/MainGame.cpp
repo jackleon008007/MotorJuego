@@ -18,6 +18,15 @@ MainGame::~MainGame() {
 
 }
 
+void MainGame::initShaders() {
+	program.compileShaders("Shaders/colorShaderVert.txt", "Shaders/colorShaderFrag.txt");
+	program.addAtribute("vertexPosition");
+	program.addAtribute("vertexColor");
+	program.linkShader();
+
+
+}
+
 void MainGame::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("HOLA", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
@@ -34,14 +43,16 @@ void MainGame::init() {
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	//para dar color la pantalla
 	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-
+	initShaders();
 
 }
 
 void MainGame::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	program.use();
 	sprite.draw();
+	program.unuse();
 	// SI TENGO ELEMENTOS ACTUALIZO
 	SDL_GL_SwapWindow(window);
 
@@ -78,3 +89,4 @@ void MainGame::update() {
 		processInput();
 	}
 }
+
