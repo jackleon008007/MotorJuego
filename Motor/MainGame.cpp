@@ -56,12 +56,19 @@ void MainGame::draw() {
 	GLuint timeLocation = program.getUniformLocation("time");
 	glUniform1f(timeLocation, time);
 	time += 0.0002;
-	//sprite.draw();
+
+	GLuint imageLocation = program.getUniformLocation("myImage");
+	glUniform1i(imageLocation, 0);
+
+	sprite.draw();
+
+	/*
 	for (int i = 0; i < listSprite.size(); ++i) {
 		listSprite[i].draw();
 	
-	}
+	}*/
 	//sprite2.draw();
+
 	program.unuse();
 	// SI TENGO ELEMENTOS ACTUALIZO
 	SDL_GL_SwapWindow(window);
@@ -90,14 +97,14 @@ void MainGame::run() {
 	int auxpos = -1;
 	int auxpos2 = 1;
 	int numSprite = 2;
-	for (int i = 0; i < numSprite; ++i) {
+	/*for (int i = 0; i < numSprite; ++i) {
 		listSprite.push_back(Sprite());
 		listSprite[i].init(auxpos, auxpos, auxpos2, auxpos2);
 		auxpos *= -1;
 		auxpos2 *= -1;
-	}
+	}*/
 	
-	//sprite.init(-1, -1, 1, 1);
+	sprite.init(-1, -1, 1, 1);
 	//sprite2.init(1, 1, -1, -1);
 	update();
 
